@@ -26,12 +26,25 @@ public class ListHouses {
         NodeHouse iterator = this.first;
 
         while (iterator != null){
-            if(iterator.getAvailable() != false){
+            if(iterator.getAvailable()){
                 return true;
             }
             iterator = iterator.getNext();
         }
         return false;
+    }
+
+    public int getTotalAmountCandyHouse(){
+        return first.getAmountCandyHouse();
+    }
+
+
+    public void substractCandyHouse(int candyToGive){
+        first.setAmountCandyHouse(this.getTotalAmountCandyHouse() - candyToGive);
+    }
+
+    public void setAvailableHouse(boolean availableHouse){
+        first.setAvailable(availableHouse);
     }
 
     public String[] getListHouses(){

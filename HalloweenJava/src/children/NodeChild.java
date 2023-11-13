@@ -19,7 +19,7 @@ public class NodeChild {
         this.next = next;
     }
 
-    private void setAmountCandyChild(int amountCandyChild) {
+    public void setAmountCandyChild(int amountCandyChild) {
         this.amountCandyChild = amountCandyChild;
     }
 }

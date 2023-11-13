@@ -10,10 +10,7 @@ public class Halloween {
     public boolean withinTheSchedule(){
         int minutesNight = closingTime - openingTime;
 
-        if (this.minute <= minutesNight){
-            return true;
-        }
-        return false;
+        return this.minute <= minutesNight;
     }
     public void start(){
         ManageHouses houses = new ManageHouses();
@@ -23,7 +20,7 @@ public class Halloween {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (withinTheSchedule()){
+        while (withinTheSchedule() && houses.freeHouse()){
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
             System.out.print("Minuto " + minute + " - ");
 
@@ -35,14 +32,30 @@ public class Halloween {
                 System.out.print("No llega nadie - ");
             }
 
-            /*if(houses.freeHouse() && queue.isEmpty()){
-                house.serveChild(queue.firstAmountCandy());
+            System.out.println("Dulces en casa: " + houses.totalAmountCandyHouse());
+
+
+            if(houses.freeHouse() && queue.isEmpty()){
+                int giveCandyToChild = houses.giveCandy();
+
+                System.out.println("Dulces a entregar: " + giveCandyToChild);
+
+                for (int i = 1; i <= giveCandyToChild; i++) {
+                    int candiesToGive = i;
+
+                    System.out.println("Niño recibe: " + candiesToGive + " dulces");
+                    queue.giveCandyAmountFirstChild(candiesToGive);
+                    houses.substractCandyHouse(1);
+                }
 
                 queue.deleteFirstChildrenInQueue();
-            }*/
+
+                System.out.println("Dulces del niño: " + queue.candyAmountFirstChild());
+
+
+            }
 
             System.out.println("Niños en cola: " + queue.size());
-
 
             houses.listHouses();
 
@@ -50,7 +63,7 @@ public class Halloween {
             System.out.print("Enter para siguiente minuto, 'q' para salir:");
 
             String input = scanner.nextLine();
-            if ("q".equals(input.toLowerCase())){
+            if ("q".equalsIgnoreCase(input)){
                 break;
             }
             minute++;
