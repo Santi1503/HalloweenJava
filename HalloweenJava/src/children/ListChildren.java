@@ -22,6 +22,13 @@ public class ListChildren {
         this.size++;
     }
 
+    public int getCandyAmountFirstChild(){
+        if(this.first != null){
+            return this.first.getAmountCandyChild();
+        }
+        return 0;
+    }
+
     public boolean getIsEmpty(){
 
         if(this.first != null){
@@ -29,6 +36,10 @@ public class ListChildren {
         } else {
             return false;
         }
+    }
+
+    public void setGiveCandyAmountFirstChild( int giveCandyAmountFirstChild ){
+        first.setAmountCandyChild(giveCandyAmountFirstChild);
     }
 
     public void deleteChildrenInQueue() {

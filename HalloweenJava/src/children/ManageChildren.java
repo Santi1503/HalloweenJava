@@ -18,6 +18,14 @@ public class ManageChildren {
         listChildren.deleteChildrenInQueue();
     }
 
+    public int candyAmountFirstChild(){
+        return  listChildren.getCandyAmountFirstChild();
+    }
+
+    public void giveCandyAmountFirstChild(int giveCandyAmountFirstChild){
+        listChildren.setGiveCandyAmountFirstChild(giveCandyAmountFirstChild);
+    }
+
     public int size(){
         return listChildren.size();
     }
